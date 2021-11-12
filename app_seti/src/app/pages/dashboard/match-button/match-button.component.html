@@ -1,0 +1,8 @@
+<p-dialog [header]="resultado" [(visible)]="display" modal="modal" showEffect="fade" [style]="{width: '450px'}">
+    <app-card-pokemon class="grid-margin mx-2" [data]="pokemon" [vWidth]="400" [width]="400" [height]="250" *ngIf="pokemon!=null">
+    </app-card-pokemon>
+    
+</p-dialog>
+
+<button type="text" (click)="open()" pButton icon="pi pi-external-link" label="INICIAR BATALLA"
+    style="width: auto"></button>

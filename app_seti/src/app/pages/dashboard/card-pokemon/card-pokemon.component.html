@@ -1,0 +1,19 @@
+
+ <div class="col-fixed"  [style]="'width:'+vWidth+'px'" >
+    <div class="card pokemon   overflow-hidden" (click)="onClick()" *ngIf="data!=undefined">
+        <div class="card-body">
+            <div class="col p-0" *ngIf="data.name!=''">
+                <h6 class="poke-name">{{data.name | titlecase}}</h6>
+                
+            </div>
+            <div class="flex justify-content-center">
+                
+                <img [src]="'./assets/pokemons/'+service.getNumber(data.id)+'.png'" [alt]="data.name" [width]="width"
+                    [height]="height">
+            </div>
+            <div class="col p-0" *ngIf="data.name!=''">
+                <p >{{getTypes(data.types) | titlecase}}</p>
+            </div>
+        </div>
+    </div>
+</div>

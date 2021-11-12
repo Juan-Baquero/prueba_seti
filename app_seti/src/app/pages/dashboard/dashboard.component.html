@@ -1,0 +1,49 @@
+<div class="loader" *ngIf="loader">
+  <div class="loader-inner">
+      <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+      </div>
+      <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+      </div>
+  </div>
+</div>
+<div class="grid border-bottom-2 border-bottom-blue mb-3">
+  <div class="col-6 col-offset-3">
+    <div class="grid flex justify-content-center">
+      <app-card-pokemon class="grid-margin mx-2" [data]="pokemon_1" [vWidth]="250" [width]="170" [height]="150"></app-card-pokemon>
+      <app-card-pokemon class="grid-margin mx-2" [data]="pokemon_2" [vWidth]="250" [width]="170" [height]="150"></app-card-pokemon>
+    </div>  
+      
+  </div>
+<div class="col-3"></div>
+  <div class="col-6 col-offset-3">
+    <div class="grid flex justify-content-center">
+      <button type="text" pButton label="SELECCIONA POKEMONS" *ngIf="pokemon_1.id==0||pokemon_2.id==0" disabled
+          style="width: auto"></button>
+
+        <app-match-button (sendLoader)="loader=$event" [pokemon_1]="pokemon_1" [pokemon_2]="pokemon_2" class="grid-margin mx-2"
+          *ngIf="pokemon_1.id!=0&&pokemon_2.id!=0"></app-match-button>
+    <app-match-report (sendLoader)="loader=$event" class="grid-margin mx-2"></app-match-report>
+    </div>  
+      
+  </div>
+ 
+</div>
+
+<div class="grid  overflow-auto" *ngIf="pokemons!=null" style="height: 350px;">
+
+  <app-card-pokemon (sendPokemon)="setPokemon($event)" class="" [data]="pokemon|async" *ngFor="let pokemon of pokemons">
+  </app-card-pokemon>
+
+
+</div>

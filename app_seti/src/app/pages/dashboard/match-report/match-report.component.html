@@ -1,0 +1,29 @@
+<p-dialog header="REPORTE DE BATALLAS" [(visible)]="display" modal="modal" showEffect="fade" [style]="{width: '650px'}">
+    <p-table [value]="data" [paginator]="true" [rows]="2"
+    [scrollable]="true"  scrollHeight="450px" scrollDirection="both"
+   >
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name_1" style="width: 230px;">Pokemon 1</th>
+                <th pSortableColumn="name_2" style="width: 230px;">Pokemon 1</th>
+                <th pSortableColumn="count">#</th>
+                <th pSortableColumn="percentage">%</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-match>
+            <tr>
+                <td>
+                    <app-card-pokemon [data]="match.pokemon_1"></app-card-pokemon>
+                </td>
+                <td>
+                    <app-card-pokemon [data]="match.pokemon_2"> </app-card-pokemon>
+                </td>
+                <td class="text-center">{{match.count}}</td>
+                <td class="text-center" >{{match.percentage |number:'.0-1'}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</p-dialog>
+
+<button type="text" (click)="open()" pButton icon="pi pi-external-link" label="REPORTE" style="width: auto"></button>
